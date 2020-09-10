@@ -1,9 +1,14 @@
 const express = require('express');
 const connectToDB = require('./config/db');
+const morgan = require('morgan');
 
 const app = express();
 
 connectToDB();
+
+// Init middleware
+app.use(express.json());
+app.use(morgan('short'));
 
 app.get('/', (req, res) => {
     res.send('API Running (ﾉ◕ヮ◕)ﾉ*:･ﾟ✧');
